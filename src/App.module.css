@@ -14,6 +14,13 @@
 .appLogo {
   height: 10vmin;
   pointer-events: none;
+  display: inline; 
+  float: right; 
+}
+h1 {
+  margin-right: 50%;
+  font-family: 'Slidefu';
+  font-size: 8vmin;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -27,4 +34,11 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 20px;
+}
+
+#headerLogo {
+  flex: 4 0;
+}
+#headerWord {
+  flex: 5 0;
 }
