@@ -3,6 +3,8 @@ import zwcs from './mockdata/zwcs.json'
 import Zwcs from './components/Zwcs'
 import styles from './App.module.css';
 import logo from './assets/images/logo.png'
+import ShoppingCart from './components/ShoppingCart';
+
 
 // const hacker = "<h1>Hacked!</h1>";
 // const jsHacker = "javascript: alert('Hacked!');"
@@ -21,6 +23,7 @@ function App() {
             <h1>中午吃啥</h1>
           </div>
         </div>
+        <ShoppingCart />
         <div className={styles.zwcsList}>
           {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
         </div>
