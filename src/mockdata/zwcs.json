@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "尊尊瓦香鸡",
+    "keeper": "bzd1",
+    "email": "zzwxj@wdnmd.com",
+    "address": {
+      "building": "ZhongHeLou",
+      "school": "LNTU",
+      "city": "HuLuDao"
+    },
+    "phone": "114514",
+    "website": "zzwxj.org"
+  },
+  {
+    "id": 2,
+    "name": "4+1冒菜",
+    "keeper": "bzd2",
+    "email": "5Maocai@wdnmd.com",
+    "address": {
+      "building": "Holl-1",
+      "school": "LNTU",
+      "city": "HuLuDao"
+    },
+    "phone": "1919810",
+    "website": "5MaoCai.net"
+  },
+  {
+    "id": 3,
+    "name": "炒鸡米饭",
+    "keeper": "bzd3",
+    "email": "cjmf@wdnmd.com",
+    "address": {
+      "building": "Holl-2",
+      "school": "LNTU",
+      "city": "HuLuDao"
+    },
+    "phone": "10086",
+    "website": "cjmf.info"
+  }
+]
