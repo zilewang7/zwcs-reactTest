@@ -1,6 +1,6 @@
 import React from 'react';
 import zwcs from './mockdata/zwcs.json'
-import Zwcs from './components/zwcs'
+import Zwcs from './components/Zwcs'
 import styles from './App.module.css';
 
 // const hacker = "<h1>Hacked!</h1>";

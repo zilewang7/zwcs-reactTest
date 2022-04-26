@@ -1,6 +1,7 @@
 import React from "react";
+import styles from "./Zwcs.module.css"
 
-interface RestaurantProps{
+interface RestaurantProps {
     id: number,
     name: string,
     email: string,
@@ -11,14 +12,14 @@ const Restaurant: React.FC<RestaurantProps> = ({
     name,
     email
 }) => {
-    
-    
+
+
     return (
-        <li>
+        <div className={styles.cardContainer}>
             <img src={`./img/${id}.png`} alt="Restarant" />
             <h2>{name}</h2>
             <p>{email}</p>
-        </li>
+        </div>
     )
 }
 
