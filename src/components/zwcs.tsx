@@ -16,7 +16,7 @@ const Restaurant: React.FC<RestaurantProps> = ({
 
     return (
         <div className={styles.cardContainer}>
-            <img src={`./img/${id}.png`} alt="Restarant" />
+            <img src={`./img/${(id + 2) % 3 + 1}.png`} alt="Restarant" />
             <h2>{name}</h2>
             <p>{email}</p>
         </div>

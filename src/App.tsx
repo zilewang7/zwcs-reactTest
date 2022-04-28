@@ -9,27 +9,49 @@ import ShoppingCart from './components/ShoppingCart';
 // const hacker = "<h1>Hacked!</h1>";
 // const jsHacker = "javascript: alert('Hacked!');"
 
-function App() {
-  return (
-    <>
-      {/* {hacker} */}
-      {/* <a href={jsHacker}>hacker</a> */}
-      <div className={styles.app}>
-        <div className={styles.appHeader}>
-          <div id={styles.headerLogo}>
-            <img src={logo} className={styles.appLogo} alt="logo" />
+
+interface Props { };
+interface State {
+  gallery: any[]
+};
+
+class App extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gallery: [],
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => this.setState({ gallery: data }));
+  }
+
+  render(): React.ReactNode {
+    return (
+      <>
+        {/* {hacker} */}
+        {/* <a href={jsHacker}>hacker</a> */}
+        <div className={styles.app}>
+          <div className={styles.appHeader}>
+            <div id={styles.headerLogo}>
+              <img src={logo} className={styles.appLogo} alt="logo" />
+            </div>
+            <div id={styles.headerWord}>
+              <h1>中午吃啥</h1>
+            </div>
           </div>
-          <div id={styles.headerWord}>
-            <h1>中午吃啥</h1>
+          <ShoppingCart />
+          <div className={styles.zwcsList}>
+            {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
+            {this.state.gallery.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
           </div>
         </div>
-        <ShoppingCart />
-        <div className={styles.zwcsList}>
-          {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 export default App;
