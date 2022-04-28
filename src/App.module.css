@@ -18,7 +18,7 @@
   float: right; 
 }
 h1 {
-  margin-right: 50%;
+  margin-right: 65%;
   font-family: 'Slidefu';
   font-size: 8vmin;
 }
@@ -38,8 +38,8 @@ h1 {
 }
 
 #headerLogo {
-  flex: 4 0;
+  flex: 5 0;
 }
 #headerWord {
-  flex: 5 0;
+  flex: 6 0;
 }
