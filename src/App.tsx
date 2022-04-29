@@ -13,6 +13,7 @@ import ShoppingCart from './components/ShoppingCart';
 interface Props { };
 interface State {
   gallery: any[]
+  count: number;
 };
 
 class App extends React.Component<Props, State> {
@@ -20,6 +21,7 @@ class App extends React.Component<Props, State> {
     super(props);
     this.state = {
       gallery: [],
+      count: 0,
     }
   }
 
@@ -43,6 +45,38 @@ class App extends React.Component<Props, State> {
               <h1>中午吃啥</h1>
             </div>
           </div>
+          {/* <button
+            onClick={() => {
+              this.setState({ count: this.state.count + 1 },
+                
+                () => {
+                  console.log(this.state.count);
+                  this.setState({ count: this.state.count + 1 },
+                    () => { console.log(this.state.count) }
+                  );
+                }
+
+              );
+
+            }}
+          >+1s</button> */}
+
+          <button
+            onClick={() => {
+              this.setState((preState, preProps) => {
+                return { count: preState.count + 1 }
+              },
+                () => { console.log(this.state.count); }
+              );
+              this.setState((preState, preProps) => {
+                return { count: preState.count + 1 }
+              },
+                () => { console.log(this.state.count); }
+              );
+            }}
+          >+1s</button>
+
+          <span>count: {this.state.count}</span>
           <ShoppingCart />
           <div className={styles.zwcsList}>
             {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
