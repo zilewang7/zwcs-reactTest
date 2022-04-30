@@ -14,15 +14,27 @@ import ShoppingCart from './components/ShoppingCart';
 const App: React.FC = (props) => {
   const [count, setCount] = useState<number>(0);
   const [gallery, setGallery] = useState<any>([]);
+  const [loading, setLoding] = useState<boolean>(true);
+  const [error, setError] = useState<string>('none');
 
   useEffect(() => {
     document.title = `${count}个菜啊`
   }, [count])
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => setGallery(data));
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        // .then(response => response.json())
+        // .then(data => setGallery(data));
+        const data = await response.json()
+        setGallery(data);
+      } catch (e: any) {
+        setError(e.message);
+      }
+      setLoding(false)
+    }
+    fetchData();
   }, [])
 
   return (
@@ -47,10 +59,13 @@ const App: React.FC = (props) => {
 
         <span>count: {count}</span>
         <ShoppingCart />
-        <div className={styles.zwcsList} key={1}>
-          {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
-          {gallery.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
-        </div>
+        {(error !== 'none') ? <><h2>出错</h2><p>{error}</p></> : <></>}
+        {loading ? <h2>loading......</h2> :
+          <div className={styles.zwcsList} key={1}>
+            {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
+            {gallery.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
+          </div>
+        }
       </div>
     </>
   );
