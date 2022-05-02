@@ -4,14 +4,17 @@ import Zwcs from './components/Zwcs'
 import styles from './App.module.css';
 import logo from './assets/images/logo.png'
 import ShoppingCart from './components/ShoppingCart';
+import UserCard from './components/UserCard'
 
 
 // const hacker = "<h1>Hacked!</h1>";
 // const jsHacker = "javascript: alert('Hacked!');"
+interface Props {
+  username?: string;
+}
 
 
-
-const App: React.FC = (props) => {
+const App: React.FC<Props> = (props) => {
   const [count, setCount] = useState<number>(0);
   const [gallery, setGallery] = useState<any>([]);
   const [loading, setLoding] = useState<boolean>(true);
@@ -50,7 +53,8 @@ const App: React.FC = (props) => {
             <h1>中午吃啥</h1>
           </div>
         </div>
-
+        <h2>USER:{props.username}</h2>
+        <UserCard />
         <button
           onClick={() => {
             setCount(count + 1);//异步，如需处理异步逻辑需要介入副作用钩子
