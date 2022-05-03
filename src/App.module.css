@@ -43,3 +43,22 @@ h1 {
 #headerWord {
   flex: 6 0;
 }
+
+.plus1s {
+  background-color: white;
+  color: red;
+	border-radius: 2px;
+    border: 1px solid red;
+	-webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+}
+
+
+.plus1s:hover {
+    background-color: red;
+    color: white;
+}
+
+.plus1s:active {
+	transform: translateY(2px);
+}

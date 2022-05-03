@@ -3,21 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AppStateProvider } from './AppState';
 
 const username = "DDC";
-const defaultContextValue = {
-  username: "fressia",
-};
-export const appContext = React.createContext(defaultContextValue);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <appContext.Provider value={defaultContextValue}>
+    {/* <appContext.Provider value={defaultContextValue}> */}
+    <AppStateProvider>
       <App username={username} />
-    </appContext.Provider>
+    </AppStateProvider>
+    {/* </appContext.Provider> */}
   </React.StrictMode>
 );
 

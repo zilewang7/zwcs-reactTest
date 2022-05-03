@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./UserCard.module.css"
 import { FiUser } from "react-icons/fi"
-import { appContext } from "../index";
+import { appContext } from "../AppState";
 
 interface Props {
 

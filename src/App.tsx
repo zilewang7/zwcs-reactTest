@@ -55,7 +55,7 @@ const App: React.FC<Props> = (props) => {
         </div>
         <h2>USER:{props.username}</h2>
         <UserCard />
-        <button
+        <button className={styles.plus1s}
           onClick={() => {
             setCount(count + 1);//异步，如需处理异步逻辑需要介入副作用钩子
           }}

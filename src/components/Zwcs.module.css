@@ -23,3 +23,28 @@ img {
     max-height: 150px;
     margin: auto;
   }
+
+.tittle {
+	display: inline;
+	vertical-align:text-bottom;
+}
+
+.addCartButton{
+	background-color: #ffeebc;
+	border-radius: 10px;
+    border: 1px solid black;
+	-webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+	width: 125px;
+	margin: auto;
+}
+
+
+.addCartButton:hover {
+    background-color: #f9cc9d;
+    color: white;
+}
+
+.addCartButton:active {
+	transform: translateY(4px);
+}
