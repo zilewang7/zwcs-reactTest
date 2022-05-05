@@ -4,11 +4,13 @@ import { FiShoppingCart } from "react-icons/fi"
 import { appContext } from "../AppState";
 
 interface Props {
+    count?: number
 }
 
 interface State {
     isOpen: boolean
 }
+
 
 class ShoppingCart extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -43,7 +45,7 @@ class ShoppingCart extends React.Component<Props, State> {
                             onClick={this.handleClick}
                         >
                             <FiShoppingCart />
-                            <span>购物车: {value.shoppingCart.items.length}</span>
+                            <span>购物车: {this.props.count}</span>
                         </button>
                         <div className={styles.cartDropDown}
                             style={{
@@ -53,7 +55,7 @@ class ShoppingCart extends React.Component<Props, State> {
                             <ul>
                                 {
                                     value.shoppingCart.items.map(i =>
-                                        (<li key={i.id}>{i.name}</li>)
+                                        (<li key={i.id}>{i.name}*{i.num}</li>)
                                     )
                                 }
                             </ul>

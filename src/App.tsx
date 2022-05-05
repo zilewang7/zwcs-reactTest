@@ -62,7 +62,7 @@ const App: React.FC<Props> = (props) => {
         >+1s</button>
 
         <span>count: {count}</span> */}
-        <ShoppingCart />
+        <ShoppingCart count={count} />
         {(error !== 'none') ? <><h2>出错</h2><p>{error}</p></> : <></>}
         {loading ? <h2>loading......</h2> :
           <div className={styles.zwcsList}>

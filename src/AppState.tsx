@@ -2,7 +2,19 @@ import React, { useState } from "react";
 
 interface AppStateValue {
     username: string,
-    shoppingCart: { items: { id: number, name: string }[] }
+    shoppingCart: { items: items[] }
+}
+
+class items {
+    id: number;
+    name: string;
+    num: number;
+
+    constructor(id: number, name: string, num: number = 0) {
+        this.id = id;
+        this.name = name;
+        this.num = num;
+    }
 }
 
 const defaultContextValue: AppStateValue = {

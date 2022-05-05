@@ -7,17 +7,54 @@ interface RestaurantProps {
     id: number,
     name: string,
     email: string,
-    count?: number,
     setCount?: any,
+    count: number
 }
 
-const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, count = 0, setCount }) => {
+
+
+// const numGet = (items, id): number => {
+//     console.log(items);
+//     let num: number = 0;
+//     num = items.find(item => {
+//         return item.id === id;
+//     }).num;
+//     console.log("num", num);
+//     return num;
+// }
+
+const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, count }) => {
     // const value = useContext(appContext);
     const setState = useContext(appSetStateContext);
+    // const state = useContext(appContext);
+
+
+    // const num = numGet(state.shoppingCart.items, id);
+
+    // console.log("state", state.shoppingCart.items);
 
     const addToCart = () => {
         console.log("addToCart");
         if (setState) {
+            setState(state => {
+                console.log("item", state.shoppingCart.items.find(item => { return item.id === id }));
+                if (state.shoppingCart.items.find(item => { return item.id === id })) {
+                    console.log("再加一份", id);
+                    for (let i = 0; i < state.shoppingCart.items.length; i++) {
+                        if (state.shoppingCart.items[i].id === id) {
+                            state.shoppingCart.items[i].num++;
+                        }
+                    }
+                    return state;
+                }
+
+                return {
+                    ...state,
+                    shoppingCart: {
+                        items: [...state.shoppingCart.items, { id, name, num: 1 }]
+                    }
+                }
+            })
             // setState(state => {
             //     console.log({
             //         ...state,
@@ -28,19 +65,19 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, count = 0, set
             //         items: [...state.shoppingCart.items, { id, name }]
             //     }
             // })
-            setState((state) => {
-                console.log({
-                    ...state,
-                    items: [...state.shoppingCart.items, { id, name }],
-                });
-                let lists = state.shoppingCart.items;
-                lists.push({ id, name });
-                console.log(lists);
-                return {
-                    ...state,
-                    items: lists,
-                };
-            });
+            // setState((state) => {
+            //     console.log({
+            //         ...state,
+            //         items: [...state.shoppingCart.items, { id, name }],
+            //     });
+            //     let lists = state.shoppingCart.items;
+            //     lists.push({ id, name, num });
+            //     console.log(lists);
+            //     return {
+            //         ...state,
+            //         items: lists,
+            //     };
+            // });
             setCount(count + 1);
         }
     }
