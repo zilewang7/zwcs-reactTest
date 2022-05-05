@@ -35,25 +35,32 @@ class ShoppingCart extends React.Component<Props, State> {
 
     render() {
         return (
-            <div className={styles.cartContainer}>
-                <button
-                    className={styles.button}
-                    onClick={this.handleClick}
-                >
-                    <FiShoppingCart />
-                    <span>购物车: 2</span>
-                </button>
-                <div className={styles.cartDropDown}
-                    style={{
-                        display: this.state.isOpen ? "block" : "none"
-                    }}
-                >
-                    <ul>
-                        <li>zzwxj</li>
-                        <li>=5maocai</li>
-                    </ul>
-                </div>
-            </div>
+            <appContext.Consumer>
+                {(value) => {
+                    return <div className={styles.cartContainer}>
+                        <button
+                            className={styles.button}
+                            onClick={this.handleClick}
+                        >
+                            <FiShoppingCart />
+                            <span>购物车: {value.shoppingCart.items.length}</span>
+                        </button>
+                        <div className={styles.cartDropDown}
+                            style={{
+                                display: this.state.isOpen ? "block" : "none"
+                            }}
+                        >
+                            <ul>
+                                {
+                                    value.shoppingCart.items.map(i =>
+                                        (<li>{i.name}</li>)
+                                    )
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }}
+            </appContext.Consumer>
         )
     }
 }

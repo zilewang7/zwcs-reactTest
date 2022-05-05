@@ -48,3 +48,9 @@ img {
 .addCartButton:active {
 	transform: translateY(4px);
 }
+
+.itemName {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}

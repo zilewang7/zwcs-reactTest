@@ -47,7 +47,7 @@ h1 {
 .plus1s {
   background-color: white;
   color: red;
-	border-radius: 2px;
+	border-radius: 5px;
     border: 1px solid red;
 	-webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;

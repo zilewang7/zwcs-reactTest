@@ -53,7 +53,7 @@ const App: React.FC<Props> = (props) => {
             <h1>中午吃啥</h1>
           </div>
         </div>
-        <h2>USER:{props.username}</h2>
+        {/* <h2>USER:{props.username}</h2> */}
         <UserCard />
         <button className={styles.plus1s}
           onClick={() => {
@@ -67,7 +67,7 @@ const App: React.FC<Props> = (props) => {
         {loading ? <h2>loading......</h2> :
           <div className={styles.zwcsList} key={1}>
             {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
-            {gallery.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
+            {gallery.map(z => <Zwcs id={z.id + 3} name={z.name} email={z.email} />)}
           </div>
         }
       </div>
