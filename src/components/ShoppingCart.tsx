@@ -4,7 +4,6 @@ import { FiShoppingCart } from "react-icons/fi"
 import { appContext } from "../AppState";
 
 interface Props {
-
 }
 
 interface State {
@@ -37,6 +36,7 @@ class ShoppingCart extends React.Component<Props, State> {
         return (
             <appContext.Consumer>
                 {(value) => {
+                    console.log("valueInShoppingCart", value);
                     return <div className={styles.cartContainer}>
                         <button
                             className={styles.button}
@@ -53,7 +53,7 @@ class ShoppingCart extends React.Component<Props, State> {
                             <ul>
                                 {
                                     value.shoppingCart.items.map(i =>
-                                        (<li>{i.name}</li>)
+                                        (<li key={i.id}>{i.name}</li>)
                                     )
                                 }
                             </ul>

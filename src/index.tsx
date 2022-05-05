@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AppStateProvider } from './AppState';
 
-const username = "DDC";
+// const username = "DDC";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     {/* <appContext.Provider value={defaultContextValue}> */}
     <AppStateProvider>
-      <App username={username} />
+      <App /*username={username}*/ />
     </AppStateProvider>
     {/* </appContext.Provider> */}
   </React.StrictMode>

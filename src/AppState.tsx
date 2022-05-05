@@ -18,7 +18,7 @@ interface Props {
 export const appSetStateContext = React.createContext<React.Dispatch<React.SetStateAction<AppStateValue>> | undefined>(undefined);
 
 export const AppStateProvider: React.FC<Props> = (props: Props) => {
-    const [state, setState] = useState(defaultContextValue);
+    const [state, setState] = useState<AppStateValue>(defaultContextValue);
     return (
         <appContext.Provider value={state}>
             <appSetStateContext.Provider value={setState}>

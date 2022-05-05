@@ -7,9 +7,11 @@ interface RestaurantProps {
     id: number,
     name: string,
     email: string,
+    count?: number,
+    setCount?: any,
 }
 
-const Restaurant: React.FC<RestaurantProps> = ({ id, name, email }) => {
+const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, count = 0, setCount }) => {
     // const value = useContext(appContext);
     const setState = useContext(appSetStateContext);
 
@@ -33,12 +35,13 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email }) => {
                 });
                 let lists = state.shoppingCart.items;
                 lists.push({ id, name });
-                console.log(lists.length);
+                console.log(lists);
                 return {
                     ...state,
                     items: lists,
                 };
             });
+            setCount(count + 1);
         }
     }
 

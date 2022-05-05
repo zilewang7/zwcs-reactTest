@@ -55,19 +55,19 @@ const App: React.FC<Props> = (props) => {
         </div>
         {/* <h2>USER:{props.username}</h2> */}
         <UserCard />
-        <button className={styles.plus1s}
+        {/* <button className={styles.plus1s}
           onClick={() => {
             setCount(count + 1);//异步，如需处理异步逻辑需要介入副作用钩子
           }}
         >+1s</button>
 
-        <span>count: {count}</span>
+        <span>count: {count}</span> */}
         <ShoppingCart />
         {(error !== 'none') ? <><h2>出错</h2><p>{error}</p></> : <></>}
         {loading ? <h2>loading......</h2> :
-          <div className={styles.zwcsList} key={1}>
-            {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} />)}
-            {gallery.map(z => <Zwcs id={z.id + 3} name={z.name} email={z.email} />)}
+          <div className={styles.zwcsList}>
+            {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} setCount={setCount} count={count} />)}
+            {gallery.map(z => <Zwcs id={z.id + 3} name={z.name} email={z.email} setCount={setCount} count={count} />)}
           </div>
         }
       </div>
