@@ -25,8 +25,8 @@ class ShoppingCart extends React.Component<Props, State> {
     // }
 
     handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        console.log("e.target", e.target);
-        console.log("e.currentTarget", e.currentTarget);
+        // console.log("e.target", e.target);
+        // console.log("e.currentTarget", e.currentTarget);
         if ((e.target as HTMLElement).nodeName === 'svg') {
             this.setState({ isOpen: !this.state.isOpen });
         }

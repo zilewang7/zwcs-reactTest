@@ -16,16 +16,29 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email }) => {
     const addToCart = () => {
         console.log("addToCart");
         if (setState) {
-            setState(state => {
+            // setState(state => {
+            //     console.log({
+            //         ...state,
+            //         items: [...state.shoppingCart.items, { id, name }]
+            //     });
+            //     return {
+            //         ...state,
+            //         items: [...state.shoppingCart.items, { id, name }]
+            //     }
+            // })
+            setState((state) => {
                 console.log({
                     ...state,
-                    items: [...state.shoppingCart.items, { id, name }]
+                    items: [...state.shoppingCart.items, { id, name }],
                 });
+                let lists = state.shoppingCart.items;
+                lists.push({ id, name });
+                console.log(lists.length);
                 return {
                     ...state,
-                    items: [...state.shoppingCart.items, { id, name }]
-                }
-            })
+                    items: lists,
+                };
+            });
         }
     }
 
@@ -37,10 +50,11 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email }) => {
             <img src={`./img/${(id + 2) % 3 + 1}.png`} alt="Restarant" />
             <h2 className={styles.itemName} title={name}>{name}</h2>
             <p>{email}</p>
-            <button onClick={addToCart} className={styles.addCartButton}>{
-                true ?
+            <button onClick={addToCart} className={styles.addCartButton}>
+                {true ?
                     <><FiSquare /><h3 className={styles.tittle}> 恰这个</h3></>
-                    : <><FiCheckSquare /><h3 className={styles.tittle}> 恰这个</h3></>}</button>
+                    : <><FiCheckSquare /><h3 className={styles.tittle}> 恰这个</h3></>}
+            </button>
             {/* <p>{value.username}</p> */}
         </div>
         //         )
