@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./Zwcs.module.css";
-import {/* appContext, */  appSetStateContext } from "../AppState";
+import { appContext, appSetStateContext } from "../AppState";
 import { FiSquare, FiCheckSquare } from "react-icons/fi";
 
 interface RestaurantProps {
@@ -23,10 +23,16 @@ interface RestaurantProps {
 //     return num;
 // }
 
+// interface checkList {
+//     id: number,
+//     ifCheck: boolean
+// }
+
+// let notCheaked: checkList[];
 const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, count }) => {
     // const value = useContext(appContext);
     const setState = useContext(appSetStateContext);
-    // const state = useContext(appContext);
+    const state = useContext(appContext);
 
 
     // const num = numGet(state.shoppingCart.items, id);
@@ -34,12 +40,12 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, coun
     // console.log("state", state.shoppingCart.items);
 
     const addToCart = () => {
-        console.log("addToCart");
+        // console.log("addToCart");
         if (setState) {
             setState(state => {
-                console.log("item", state.shoppingCart.items.find(item => { return item.id === id }));
+                // console.log("item", state.shoppingCart.items.find(item => { return item.id === id }));
                 if (state.shoppingCart.items.find(item => { return item.id === id })) {
-                    console.log("再加一份", id);
+                    // console.log("再加一份", id);
                     for (let i = 0; i < state.shoppingCart.items.length; i++) {
                         if (state.shoppingCart.items[i].id === id) {
                             state.shoppingCart.items[i].num++;
@@ -91,7 +97,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, coun
             <h2 className={styles.itemName} title={name}>{name}</h2>
             <p>{email}</p>
             <button onClick={addToCart} className={styles.addCartButton}>
-                {true ?
+                {!state.shoppingCart.items.find(item => { return item.id === id }) ?
                     <><FiSquare /><h3 className={styles.tittle}> 恰这个</h3></>
                     : <><FiCheckSquare /><h3 className={styles.tittle}> 恰这个</h3></>}
             </button>
