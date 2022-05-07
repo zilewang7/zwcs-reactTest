@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import zwcs from './mockdata/zwcs.json'
-import Zwcs from './components/Zwcs'
+import zwcs from './mockdata/zwcs.json';
+import Zwcs from './components/Zwcs';
+import ZwcsDiscount from './components/ZwcsDiscount';
 import styles from './App.module.css';
 import logo from './assets/images/logo.png'
 import ShoppingCart from './components/ShoppingCart';
-import UserCard from './components/UserCard'
+import UserCard from './components/UserCard';
 
 
 // const hacker = "<h1>Hacked!</h1>";
@@ -66,8 +67,14 @@ const App: React.FC<Props> = (props) => {
         {(error !== 'none') ? <><h2>出错</h2><p>{error}</p></> : <></>}
         {loading ? <h2>loading......</h2> :
           <div className={styles.zwcsList}>
-            {zwcs.map(z => <Zwcs id={z.id} name={z.name} email={z.email} setCount={setCount} count={count} />)}
-            {gallery.map(z => <Zwcs id={z.id + 3} name={z.name} email={z.email} setCount={setCount} count={count} />)}
+            {zwcs.map((z, index) => (
+              index % 2 ?
+                <ZwcsDiscount id={z.id} name={z.name} email={z.email} setCount={setCount} count={count} />
+                : <Zwcs id={z.id} name={z.name} email={z.email} setCount={setCount} count={count} />))}
+            {gallery.map((z, index) => (
+              !(index % 3) ?
+                <ZwcsDiscount id={z.id + 3} name={z.name} email={z.email} setCount={setCount} count={count} />
+                : <Zwcs id={z.id + 3} name={z.name} email={z.email} setCount={setCount} count={count} />))}
           </div>
         }
       </div>
