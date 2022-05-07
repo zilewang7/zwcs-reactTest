@@ -98,8 +98,8 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, coun
             <p>{email}</p>
             <button onClick={addToCart} className={styles.addCartButton}>
                 {!state.shoppingCart.items.find(item => { return item.id === id }) ?
-                    <><FiSquare /><h3 className={styles.tittle}> 恰这个</h3></>
-                    : <><FiCheckSquare /><h3 className={styles.tittle}> 恰这个</h3></>}
+                    <FiSquare /> : <FiCheckSquare />}
+                <h3 className={styles.tittle}> 恰这个</h3>
             </button>
             {/* <p>{value.username}</p> */}
         </div>
