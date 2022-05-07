@@ -36,56 +36,35 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, coun
 
 
     // const num = numGet(state.shoppingCart.items, id);
-
     // console.log("state", state.shoppingCart.items);
-
     const addToCart = () => {
-        // console.log("addToCart");
+        console.log("addToCart");
+        let stateCopy = state;
+        if (stateCopy.shoppingCart.items.find(item => { return item.id === id })) {
+            // console.log("再加一份", id);
+            for (let i = 0; i < stateCopy.shoppingCart.items.length; i++) {
+                if (stateCopy.shoppingCart.items[i].id === id) {
+                    stateCopy.shoppingCart.items[i].num++;
+                    // console.log("num", stateCopy.shoppingCart.items[i].num);
+                }
+            }
+        }
         if (setState) {
             setState(state => {
                 // console.log("item", state.shoppingCart.items.find(item => { return item.id === id }));
                 if (state.shoppingCart.items.find(item => { return item.id === id })) {
-                    // console.log("再加一份", id);
-                    for (let i = 0; i < state.shoppingCart.items.length; i++) {
-                        if (state.shoppingCart.items[i].id === id) {
-                            state.shoppingCart.items[i].num++;
+                    return stateCopy;
+                } else {
+                    return {
+                        ...state,
+                        shoppingCart: {
+                            items: [...state.shoppingCart.items, { id, name, num: 1 }]
                         }
-                    }
-                    return state;
-                }
-
-                return {
-                    ...state,
-                    shoppingCart: {
-                        items: [...state.shoppingCart.items, { id, name, num: 1 }]
                     }
                 }
             })
-            // setState(state => {
-            //     console.log({
-            //         ...state,
-            //         items: [...state.shoppingCart.items, { id, name }]
-            //     });
-            //     return {
-            //         ...state,
-            //         items: [...state.shoppingCart.items, { id, name }]
-            //     }
-            // })
-            // setState((state) => {
-            //     console.log({
-            //         ...state,
-            //         items: [...state.shoppingCart.items, { id, name }],
-            //     });
-            //     let lists = state.shoppingCart.items;
-            //     lists.push({ id, name, num });
-            //     console.log(lists);
-            //     return {
-            //         ...state,
-            //         items: lists,
-            //     };
-            // });
-            setCount(count + 1);
         }
+        setCount(count + 1);
     }
 
     return (
