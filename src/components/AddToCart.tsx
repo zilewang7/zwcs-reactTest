@@ -44,3 +44,35 @@ export const withAddToCart = (ChildComponent: React.ComponentType<RestaurantProp
         return <ChildComponent {...props} addToCart={addToCart} />
     }
 }
+
+export const useAddToCart = () => {
+    const setState = useContext(appSetStateContext);
+    const state = useContext(appContext);
+    const addToCart = (id, name, count, setCount) => {
+        console.log("addToCart");
+        let stateCopy = state;
+        if (stateCopy.shoppingCart.items.find(item => { return item.id === id })) {
+            for (let i = 0; i < stateCopy.shoppingCart.items.length; i++) {
+                if (stateCopy.shoppingCart.items[i].id === id) {
+                    stateCopy.shoppingCart.items[i].num++;
+                }
+            }
+        }
+        if (setState) {
+            setState(state => {
+                if (state.shoppingCart.items.find(item => { return item.id === id })) {
+                    return stateCopy;
+                } else {
+                    return {
+                        ...state,
+                        shoppingCart: {
+                            items: [...state.shoppingCart.items, { id, name, num: 1 }]
+                        }
+                    }
+                }
+            })
+        }
+        setCount(count + 1);
+    }
+    return addToCart;
+}

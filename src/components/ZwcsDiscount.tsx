@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styles from "./Zwcs.module.css";
 import { appContext, /*appSetStateContext*/ } from "../AppState";
 import { FiSquare, FiCheckSquare } from "react-icons/fi";
-import { withAddToCart } from './AddToCart';
+import { useAddToCart } from './AddToCart';
 
 export interface RestaurantProps {
     id: number,
@@ -10,13 +10,12 @@ export interface RestaurantProps {
     email: string,
     setCount?: any,
     count: number
-    addToCart: (id, name, count, setCount) => void;
 }
 
 
-const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, count, addToCart }) => {
+const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, count }) => {
     const state = useContext(appContext);
-
+    const addToCart = useAddToCart();
     return (
         <div className={styles.cardContainer}>
             <img src={`./img/${(id + 2) % 3 + 1}.png`} alt="Restarant" />
@@ -31,4 +30,4 @@ const Restaurant: React.FC<RestaurantProps> = ({ id, name, email, setCount, coun
     )
 }
 
-export default withAddToCart(Restaurant);
+export default Restaurant;
